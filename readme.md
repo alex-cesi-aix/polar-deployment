@@ -158,7 +158,8 @@ _note : l'installation d'istioctl est commentée - à décommenter pour installe
 ```.../polar-deployment/k8s/platform/development$ istioctl install -f config-istio-tracing/tracing.yaml --skip-confirmation```
 
 4. Déploiement, dans le ns istio-system des manifestes configurant la sécurité https et le service mesh
-.../polar-deployment/k8s/platform/development$ kubectl apply -f istio-system -n istio-system
+
+```.../polar-deployment/k8s/platform/development$ kubectl apply -f istio-system -n istio-system```
 
 5. Démarrer un tunnel minikube pour le profil cesi :
 
@@ -182,7 +183,7 @@ GitHub Actions
 
 2. créer un jeton de sécurité :
 
-_Settings > Developer Settings > Personal access tokens > Generate new token (classic)_
+_Compte GitHub > Settings > Developer Settings > Personal access tokens > Generate new token (classic)_
 
 * Note = nom du jeton (ex : local-dev-environment)
 * Cocher repo
