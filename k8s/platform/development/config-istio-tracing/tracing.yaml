@@ -1,0 +1,13 @@
+#définition du collecteur de traces Jaeger en tant qu'extension Istio
+apiVersion: install.istio.io/v1alpha1
+kind: IstioOperator
+spec:
+  meshConfig:
+    enableTracing: true
+    defaultConfig:
+      tracing: {} # désactivation des anciennes options de config du tracing
+    extensionProviders:
+      - name: jaeger
+        opentelemetry:
+          port: 4317
+          service: jaeger-collector.istio-system.svc.cluster.local

@@ -1,0 +1,31 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: polar-certificate
+spec:
+  commonName: polarbookshop.io
+  subject:
+    countries:
+    - my-country
+    localities:
+    - my-locality
+    organizationalUnits:
+    - my-ou
+    organizations:
+    - my-org
+    postalCodes:
+    - my-pc
+    provinces:
+    - my-province
+    serialNumber: my-sn
+    streetAddresses:
+    - my-address
+  dnsNames:
+  - polarbookshop.io
+  - kiali.polarbookshop.io
+  - tracing.polarbookshop.io
+  - prometheus.polarbookshop.io
+  issuerRef:
+    name: ca-issuer
+  secretName: polar-certificate
+
