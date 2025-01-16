@@ -1,4 +1,6 @@
-echo "installation du cluster cesi"
+#!/bin/bash
+
+echo "******installation du cluster cesi"
 minikube start --cpus 4 --memory 8g --driver docker --kubernetes-version v1.30.5 --profile cesi
 echo "******installation du contrôleur Ingress"
 minikube addons enable ingress -p cesi
@@ -13,10 +15,10 @@ helm install cert-manager jetstack/cert-manager --create-namespace --namespace c
 echo "******installation istio 1.24.1"
 ISTIO_VERSION=1.24.1
 #client Istio
-#curl -L https://istio.io/downloadIstio | ISTIO_VERSION=${ISTIO_VERSION} TARGET_ARCH=x86_64 sh -
-#sudo install istio-${ISTIO_VERSION}/bin/istioctl /usr/local/bin/istioctl
-#rm -r istio-${ISTIO_VERSION}
-#istioctl version --remote=false
+curl -L https://istio.io/downloadIstio | ISTIO_VERSION=${ISTIO_VERSION} TARGET_ARCH=x86_64 sh -
+sudo install istio-${ISTIO_VERSION}/bin/istioctl /usr/local/bin/istioctl
+rm -r istio-${ISTIO_VERSION}
+istioctl version --remote=false
 istioctl experimental precheck
 istioctl install --skip-confirmation --set profile=demo --set meshConfig.accessLogFile=/dev/stdout --set meshConfig.accessLogEncoding=JSON #--set values.pilot.env.PILOT_JWT_PUB_KEY_REFRESH_INTERVAL=15s
 

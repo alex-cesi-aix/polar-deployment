@@ -3,12 +3,20 @@ Prérequis
 --------
 * git
 * JDK 17 - pour tester en local
-* Tilt
-* curl
-* (optionnel) Siege
-* Si WSL, wslview
 * Docker ou si WSL, intégration Docker Desktop
 * kubectl et Minikube ou KinD
+* Tilt
+* Helm
+* curl
+* (optionnel) Siege et HTTPie
+* Si WSL, wslview
+
+pour installer les prérequis (distribution Ubuntu 22.0.4 ou 24.0.4)
+
+```.../polar-deployment$ sh pre_install.sh```
+
+_note : le script installe Minikube mais pas de Docker_
+
 
 Mise en place de l'infrastructure d'exécution
 ---------------------------------------------
@@ -176,12 +184,15 @@ _note : si le le profil n'est pas celui par défaut l'option -p est nécessaire_
 GitHub Actions 
 -------------
 -------------
-=> les workflow sont Déclenchés au push de chaque dépôt (excepté polar-deployment)
+=> les workflow sont déclenchés au push de chaque dépôt (excepté polar-deployment non associé à un workflow)
 
-1. remplacer alex-cesi-aix par le nom du compte GitHub dans les fichiers .github/workflows/commit-stage.yml
+Remplacer alex-cesi-aix par le nom du compte GitHub dans les fichiers .github/workflows/commit-stage.yml
 
+Publication d'image dans Github Container Registry
+--------------------------------------------------
+--------------------------------------------------
 
-2. créer un jeton de sécurité :
+Créer un jeton de sécurité (personal access token) :
 
 _Compte GitHub > Settings > Developer Settings > Personal access tokens > Generate new token (classic)_
 
