@@ -4,5 +4,3 @@ HELP.md
 *.iws
 *.iml
 *.ipr
-linux-amd64
-helm-v3.15.4-linux-amd64.tar.gz*
