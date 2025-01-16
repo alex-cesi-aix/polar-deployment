@@ -15,7 +15,9 @@ pour installer les prérequis (distribution Ubuntu 22.0.4 ou 24.0.4)
 
 ```.../polar-deployment$ sh pre_install.sh```
 
-_note : le script installe Minikube mais pas de Docker_
+_note : le script installe Minikube mais pas de Docker._
+
+_conseil : déplacer le script hors du dossier polar-deployment avant de le lancer_
 
 
 Mise en place de l'infrastructure d'exécution
