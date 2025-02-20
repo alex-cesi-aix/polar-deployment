@@ -1,3 +1,15 @@
+V2
+---------
+---------
+Implémentation d'une ébauche d'event-driven architecture :
+* La création d'une commande (order) entraine l'envoi d'un message notifiant que la commande est ACCEPTED dans RabbitMQ
+* Le message est consommé par dispatcher-service
+* dispatcher-service traite de façon très "fake" le message. la logique métier s'appuie sur Spring Cloud Function (prog fonctionnelle)
+* dispatcher-service transmet un message "ORDER-DISPATCHED" à order-service via RabbitMQ
+* order-service met à jour le statut de la commande (dispatched) dans sa base.
+
+_note : les requêtes de création d'une commande sont dans la section Tests de l'application_
+
 Prérequis
 ---------
 --------
@@ -16,8 +28,6 @@ pour installer les prérequis (distribution Ubuntu 22.0.4 ou 24.0.4)
 ```.../polar-deployment$ sh pre_install.sh```
 
 _note : le script installe Minikube mais pas de Docker._
-
-_conseil : déplacer le script hors du dossier polar-deployment avant de le lancer_
 
 
 Mise en place de l'infrastructure d'exécution
@@ -143,21 +153,40 @@ Tests de l'application
 
 ```siege https://polarbookshop.io/books -c1 -d1 -v```
 
+**tests de créations et lecture de ressources avec HTTPie :**
+
+Création d'un livre :
+
+```http --verify=no POST https://polarbookshop.io/books author="Jon Snow" title="All I don't know about the Arctic" isbn="1234567897" price=9.90 publisher="Polarsophia"```
+
+Liste des livres :
+
+```http --verify=no https://polarbookshop.io/books ```
+
+Passage d'une commande :
+
+```http --verify=no POST https://polarbookshop.io/orders isbn=1234567897 quantity=3```
+
+Liste des commandes passées :
+
+```http --verify=no https://polarbookshop.io/orders ```
+
 
 **Observation du trafic dans l'UI Kiali:**
 
 ```wslview https://kiali.polarbookshop.io```
 
+
 **Observation des traces dans l'UI Jaeger :**
 
 ```wslview https://tracing.polarbookshop.io```
 
+
 # alternative avec script
 
 1. lancement du script de mise en place de l'infra :
-```.../polar-deployment$ sh install_infra.sh```
 
-_note : l'installation d'istioctl est commentée - à décommenter pour installer_
+```.../polar-deployment$ sh install_infra.sh```
 
 2. Déploiement des services de données dans le ns polar :
 

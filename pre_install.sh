@@ -35,6 +35,8 @@ HELM_VERSION=3.15.4
 wget https://get.helm.sh/helm-v${HELM_VERSION}-linux-amd64.tar.gz
 tar -zxvf helm-v${HELM_VERSION}-linux-amd64.tar.gz
 sudo mv linux-amd64/helm /usr/local/bin/helm
+rm helm-v${HELM_VERSION}-linux-amd64.tar.gz
+rm -r linux-amd64
 
 echo "******installation HTTPie"
 brew install httpie

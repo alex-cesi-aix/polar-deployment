@@ -18,6 +18,7 @@ ISTIO_VERSION=1.24.1
 curl -L https://istio.io/downloadIstio | ISTIO_VERSION=${ISTIO_VERSION} TARGET_ARCH=x86_64 sh -
 sudo install istio-${ISTIO_VERSION}/bin/istioctl /usr/local/bin/istioctl
 rm -r istio-${ISTIO_VERSION}
+rm *.tar.gz
 istioctl version --remote=false
 istioctl experimental precheck
 istioctl install --skip-confirmation --set profile=demo --set meshConfig.accessLogFile=/dev/stdout --set meshConfig.accessLogEncoding=JSON #--set values.pilot.env.PILOT_JWT_PUB_KEY_REFRESH_INTERVAL=15s
