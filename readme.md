@@ -1,7 +1,7 @@
 V2
 ---------
 ---------
-Ajout de la communication par évènements basée sur Spring Cloud Stream intégrant RabbitMq  :
+Ajout de la communication par évènements basée sur Spring Cloud Stream intégrant RabbitMQ  :
 * La création d'une commande (order) entraine l'envoi d'un message notifiant que la commande est ACCEPTED dans RabbitMQ
 * Le message est consommé par dispatcher-service
 * dispatcher-service traite de façon très "idiote" le message. la logique métier s'appuie sur Spring Cloud Function (prog fonctionnelle)
