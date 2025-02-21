@@ -1,10 +1,10 @@
 V2
 ---------
 ---------
-Implémentation d'une ébauche d'event-driven architecture :
+Ajout de la communication par évènements basée sur Spring Cloud Stream intégrant RabbitMq  :
 * La création d'une commande (order) entraine l'envoi d'un message notifiant que la commande est ACCEPTED dans RabbitMQ
 * Le message est consommé par dispatcher-service
-* dispatcher-service traite de façon très "fake" le message. la logique métier s'appuie sur Spring Cloud Function (prog fonctionnelle)
+* dispatcher-service traite de façon très "idiote" le message. la logique métier s'appuie sur Spring Cloud Function (prog fonctionnelle)
 * dispatcher-service transmet un message "ORDER-DISPATCHED" à order-service via RabbitMQ
 * order-service met à jour le statut de la commande (dispatched) dans sa base.
 
