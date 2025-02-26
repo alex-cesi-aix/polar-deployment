@@ -143,6 +143,23 @@ Tests de l'application
 
 ```siege https://polarbookshop.io/books -c1 -d1 -v```
 
+**tests de création et lecture de ressources avec HTTPie :**
+
+Création d'un livre :
+
+```http --verify=no POST https://polarbookshop.io/books author="Jon Snow" title="All I don't know about the Arctic" isbn="1234567897" price=9.90 publisher="Polarsophia"```
+
+Liste des livres :
+
+```http --verify=no https://polarbookshop.io/books ```
+
+Passage d'une commande :
+
+```http --verify=no POST https://polarbookshop.io/orders isbn=1234567897 quantity=3```
+
+Liste des commandes passées :
+
+```http --verify=no https://polarbookshop.io/orders ```
 
 **Observation du trafic dans l'UI Kiali:**
 
