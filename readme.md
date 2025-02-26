@@ -153,7 +153,7 @@ Tests de l'application
 
 ```siege https://polarbookshop.io/books -c1 -d1 -v```
 
-**tests de créations et lecture de ressources avec HTTPie :**
+**tests de création et lecture de ressources avec HTTPie :**
 
 Création d'un livre :
 
